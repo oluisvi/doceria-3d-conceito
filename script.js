@@ -1,0 +1,4 @@
+const navToggle=document.querySelector('.menu-toggle');const nav=document.querySelector('.site-header nav');
+navToggle?.addEventListener('click',()=>{const open=navToggle.getAttribute('aria-expanded')!=='true';navToggle.setAttribute('aria-expanded',String(open));nav.classList.toggle('is-open',open)});
+document.querySelectorAll('.site-header nav a').forEach(link=>link.addEventListener('click',()=>{nav?.classList.remove('is-open');navToggle?.setAttribute('aria-expanded','false')}));
+document.querySelectorAll('.category-tab').forEach(tab=>tab.addEventListener('click',()=>{const filter=tab.dataset.filter;document.querySelectorAll('.category-tab').forEach(item=>{const active=item===tab;item.classList.toggle('is-active',active);item.setAttribute('aria-selected',String(active))});document.querySelectorAll('.product-card').forEach(card=>{card.hidden=filter!=='all'&&card.dataset.category!==filter})}));
